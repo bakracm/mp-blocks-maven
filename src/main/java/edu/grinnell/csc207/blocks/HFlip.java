@@ -4,7 +4,8 @@ package edu.grinnell.csc207.blocks;
  * A horizontally flipped ASCII block.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Mina Bakrac
+ * @author Anthony Castleberry
  */
 public class HFlip implements AsciiBlock {
   // +--------+------------------------------------------------------------
