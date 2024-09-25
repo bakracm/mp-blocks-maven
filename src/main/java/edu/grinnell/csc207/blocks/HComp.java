@@ -72,7 +72,45 @@ public class HComp implements AsciiBlock {
    *   if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
-    return "";  // STUB
+
+    String stringrow = new String();
+
+    if(this.align.equals(VAlignment.TOP)) {
+
+      for (int j = 0; j < this.blocks.length; j++) {
+        if (i < this.blocks[j].height()) {
+          stringrow = stringrow.concat(this.blocks[j].row(i));
+        } else {
+          stringrow = stringrow.concat(" ".repeat(this.blocks[j].width()));
+        }
+      }
+    } else if (this.align.equals(VAlignment.CENTER)) {
+
+      for (int j = 0; j < this.blocks.length; j++) {
+
+        int diff = this.height() - this.blocks[j].height();
+
+        if (i >= diff / 2 && i < diff / 2 + this.blocks[j].height()) {
+          stringrow = stringrow.concat(this.blocks[j].row(i - diff / 2));
+        } else {
+          stringrow = stringrow.concat(" ".repeat(this.blocks[j].width()));
+        }
+      }
+
+    } else if (this.align.equals(VAlignment.BOTTOM)) {
+
+        for (int j = 0; j < this.blocks.length; j++) {
+
+          int diff = this.height() - this.blocks[j].height();
+
+          if (i >= diff) {
+            stringrow = stringrow.concat(this.blocks[j].row(i - diff));
+          } else {
+            stringrow = stringrow.concat(" ".repeat(this.blocks[j].width()));
+          }
+        }
+    } 
+    return stringrow;  // STUB
   } // row(int)
 
   /**
@@ -81,7 +119,13 @@ public class HComp implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    int height = this.blocks[0].height();
+    for (int i = 1; i < this.blocks.length; i++) {
+      if (height < this.blocks[i].height()) {
+        height = this.blocks[i].height();
+      }
+    }
+    return height;
   } // height()
 
   /**
@@ -90,7 +134,13 @@ public class HComp implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 0;   // STUB
+    int width = 0;
+    
+    for (int i = 0; i < this.blocks.length; i++) {
+      width += this.blocks[i].width();
+    }
+
+      return width;
   } // width()
 
   /**
