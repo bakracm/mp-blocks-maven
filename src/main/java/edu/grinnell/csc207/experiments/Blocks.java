@@ -151,7 +151,7 @@ public class Blocks {
     separator(pen);
     pen.println("Our Block");
     figure(pen, "Our box example",
-       new OurBlock(boxedLine));
+       new OurBlock(b));
 
     pen.close();
   } // main(String[])
