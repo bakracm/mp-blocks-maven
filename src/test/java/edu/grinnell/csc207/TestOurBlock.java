@@ -18,7 +18,7 @@ public class TestOurBlock {
                  B B
                  BBB
                  """,
-        TestUtils.toString(new OurBlock(b)));
+        TestUtils.toString(new OurBlock(Bbox)));
   } // ThreeByThree()
 
   Line Hello = new Line("Hello");

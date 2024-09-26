@@ -101,7 +101,23 @@ public class Boxed implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    try {
+      if (other instanceof Boxed) {
+        if (other.width() == this.width() && this.height() == other.height()) {
+          for (int k = 0; k < this.height(); k++) {
+            for (int j = 0; j < this.width(); j++) {
+              if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
+                return false;
+              }
+            }
+          }
+          return true;
+        }
+      }
+      return false;
+    } catch (Exception e) {
+      return false;
+    } // try/catch(e)
   } // eqv(AsciiBlock)
 
   /**

@@ -145,6 +145,11 @@ public class VComp implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
+
+    if(this.blocks.length == 0) {
+      return 0;
+    }
+
     int width = this.blocks[0].width();
     for (int i = 1; i < this.blocks.length; i++) {
       if (width < this.blocks[i].width()) {
@@ -164,6 +169,22 @@ public class VComp implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    try {
+      if (other instanceof VComp) {
+        if (other.width() == this.width() && this.height() == other.height()) {
+          for (int k = 0; k < this.height(); k++) {
+            for (int j = 0; j < this.width(); j++) {
+              if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
+                return false;
+              }
+            }
+          }
+          return true;
+        }
+      }
+      return false;
+    } catch (Exception e) {
+      return false;
+    } // try/catch(e)
   } // eqv(AsciiBlock)
 } // class VComp
