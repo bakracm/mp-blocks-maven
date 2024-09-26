@@ -1,12 +1,13 @@
 package edu.grinnell.csc207.blocks;
 
 /**
- * The outline of an ASCII block.
+ * A vertically flipped ASCII block.
  *
+ * @author Samuel A. Rebelsky
  * @author Mina Bakrac
  * @author Anthony Castleberry
  */
-public class OurBlock implements AsciiBlock {
+public class VFlip2 implements AsciiBlock {
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
@@ -26,9 +27,9 @@ public class OurBlock implements AsciiBlock {
    * @param original
    *   The original block.
    */
-  public OurBlock(AsciiBlock original) {
+  public VFlip2(AsciiBlock original) {
     this.block = original;
-  } // HFlip(AsciiBlock)
+  } // VFlip2(AsciiBlock)
 
   // +---------+-----------------------------------------------------------
   // | Methods |
@@ -45,19 +46,7 @@ public class OurBlock implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-    String stringrow = new String();
-    String beginning = new String();
-    String end = new String();
-    if ((i == 0) || (i == (this.block.height())-1)){
-      stringrow = this.block.row(i);
-    }
-    if ((i > 0) && (i < (this.block.height()-1))){
-      beginning = this.block.row(i).substring(0,1);
-      end = this.block.row(i).substring(this.block.width() - 1);
-
-      stringrow = beginning.concat(" ".repeat(this.block.width()-2)).concat(end);
-    }
-    return stringrow;
+    return (this.block.row(this.height()-i-1));
   } // row(int)
 
   /**
@@ -90,4 +79,4 @@ public class OurBlock implements AsciiBlock {
   public boolean eqv(AsciiBlock other) {
     return false;       // STUB
   } // eqv(AsciiBlock)
-} // class OurBlock
+} // class VFlip2

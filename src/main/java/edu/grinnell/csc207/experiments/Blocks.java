@@ -1,5 +1,7 @@
 package edu.grinnell.csc207.experiments;
 
+import edu.grinnell.csc207.blocks.OurBlock;
+import edu.grinnell.csc207.blocks.VFlip2;
 import edu.grinnell.csc207.blocks.AsciiBlock;
 import edu.grinnell.csc207.blocks.Boxed;
 import edu.grinnell.csc207.blocks.HAlignment;
@@ -9,6 +11,7 @@ import edu.grinnell.csc207.blocks.Lines;
 import edu.grinnell.csc207.blocks.Rect;
 import edu.grinnell.csc207.blocks.VComp;
 import edu.grinnell.csc207.blocks.VAlignment;
+
 
 import java.io.PrintWriter;
 
@@ -144,6 +147,11 @@ public class Blocks {
         new VComp(HAlignment.CENTER, new AsciiBlock[] {v1, v7, v11, v19}));
     figure(pen, "Left composition",
         new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
+
+    separator(pen);
+    pen.println("Our Block");
+    figure(pen, "Our box example",
+       new OurBlock(boxedLine));
 
     pen.close();
   } // main(String[])
