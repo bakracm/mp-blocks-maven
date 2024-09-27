@@ -48,15 +48,15 @@ public class OurBlock implements AsciiBlock {
     String stringrow = new String();
     String beginning = new String();
     String end = new String();
-    if ((i == 0) || (i == (this.block.height())-1)){
+    if ((i == 0) || (i == (this.block.height()) - 1)) {
       stringrow = this.block.row(i);
-    }
-    if ((i > 0) && (i < (this.block.height()-1))){
-      beginning = this.block.row(i).substring(0,1);
+    } // if()
+    if ((i > 0) && (i < (this.block.height() - 1))) {
+      beginning = this.block.row(i).substring(0, 1);
       end = this.block.row(i).substring(this.block.width() - 1);
 
-      stringrow = beginning.concat(" ".repeat(this.block.width()-2)).concat(end);
-    }
+      stringrow = beginning.concat(" ".repeat(this.block.width() - 2)).concat(end);
+    } // if()
     return stringrow;
   } // row(int)
 
@@ -88,6 +88,6 @@ public class OurBlock implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return false;
   } // eqv(AsciiBlock)
 } // class OurBlock

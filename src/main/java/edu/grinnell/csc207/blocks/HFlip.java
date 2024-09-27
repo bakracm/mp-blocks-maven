@@ -46,28 +46,20 @@ public class HFlip implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-
-     char flip[] = new char[this.block.width()];
-
-      int front = 0;
-      int back = this.width() - 1;
-
-      do {
-        flip[front] = this.block.row(i).charAt(back);
-        flip[back] = this.block.row(i).charAt(front);
-
-        front++;
-        back--;
-
-        if (back == front) {
-          int center = back;
-          flip[center] = this.block.row(i).charAt(center);
-        }
-      } while (back - front > 0);
-
-
-      return String.valueOf(flip);
-
+    char[] flip = new char[this.block.width()];
+    int front = 0;
+    int back = this.width() - 1;
+    do {
+      flip[front] = this.block.row(i).charAt(back);
+      flip[back] = this.block.row(i).charAt(front);
+      front++;
+      back--;
+      if (back == front) {
+        int center = back;
+        flip[center] = this.block.row(i).charAt(center);
+      } // if()
+    } while (back - front > 0);
+    return String.valueOf(flip);
   } // row(int)
 
   /**
@@ -105,12 +97,12 @@ public class HFlip implements AsciiBlock {
             for (int j = 0; j < this.width(); j++) {
               if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
                 return false;
-              }
-            }
-          }
+              } // if()
+            } // for()
+          } // for()
           return true;
-        }
-      }
+        } // if()
+      } // if()
       return false;
     } catch (Exception e) {
       return false;

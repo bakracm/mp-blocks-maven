@@ -72,7 +72,7 @@ public class Grid implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return element.height() * vreps;   // STUB
+    return element.height() * vreps;
   } // height()
 
   /**
@@ -81,7 +81,7 @@ public class Grid implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return element.width() * hreps;   // STUB
+    return element.width() * hreps;
   } // width()
 
   /**
@@ -97,20 +97,19 @@ public class Grid implements AsciiBlock {
     try {
       if (other instanceof Grid) {
         if (other.width() == this.width() && this.height() == other.height()) {
-          if(this.element.eqv(((Grid) other).element)) {
+          if (this.element.eqv(((Grid) other).element)) {
             for (int k = 0; k < this.height(); k++) {
               for (int j = 0; j < this.width(); j++) {
                 if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
                   return false;
-                }
-              }
-            }
-          return true;
-          }
-        }
-      }
+                } // if()
+              } // for()
+            } // for()
+            return true;
+          } // if()
+        } // if()
+      } // if()
       return false;
-
     } catch (Exception e) {
       return false;
     } // try/catch(e)

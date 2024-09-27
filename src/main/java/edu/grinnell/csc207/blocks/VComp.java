@@ -75,53 +75,56 @@ public class VComp implements AsciiBlock {
 
     String stringrow = new String();
 
-    if(this.align.equals(HAlignment.LEFT)) {
+    if (this.align.equals(HAlignment.LEFT)) {
 
       int counter = 0;
-      
-      for(int j = 0; j < this.blocks.length; j++){
-        for(int k = 0; k < this.blocks[j].height(); k++){
+
+      for (int j = 0; j < this.blocks.length; j++) {
+        for (int k = 0; k < this.blocks[j].height(); k++) {
           if (counter + k == i) {
-            stringrow = this.blocks[j].row(k).concat(" ".repeat(this.width() - this.blocks[j].width()));
-          }
-        }
+            stringrow = this.blocks[j].row(k)
+                        .concat(" ".repeat(this.width() - this.blocks[j].width()));
+          } // if()
+        } // for()
         counter += this.blocks[j].height();
-      }
-    }
-    if(this.align.equals(HAlignment.CENTER)) {
+      } // for()
+    } //if()
+    if (this.align.equals(HAlignment.CENTER)) {
 
       int counter = 0;
       int diff = 0;
-      
-      for(int j = 0; j < this.blocks.length; j++){
-        for(int k = 0; k < this.blocks[j].height(); k++){
+
+      for (int j = 0; j < this.blocks.length; j++) {
+        for (int k = 0; k < this.blocks[j].height(); k++) {
           if (counter + k == i) {
 
             diff = this.width() - this.blocks[j].width();
 
-            stringrow = " ".repeat(diff/2).concat(this.blocks[j].row(k)).concat(" ".repeat(diff/2));
+            stringrow = " ".repeat(diff / 2)
+                        .concat(this.blocks[j].row(k)).concat(" ".repeat(diff / 2));
 
-            if (stringrow.length() != this.width()){
+            if (stringrow.length() != this.width()) {
               stringrow = stringrow.concat(" ");
-            }
-          }
-        }
+            } // if()
+          } // if()
+        } // for()
         counter += this.blocks[j].height();
-      }
-    }
-    if(this.align.equals(HAlignment.RIGHT)) {
+      } // for()
+    } // if(CENTER)
+    if (this.align.equals(HAlignment.RIGHT)) {
 
       int counter = 0;
-      
-      for(int j = 0; j < this.blocks.length; j++){
-        for(int k = 0; k < this.blocks[j].height(); k++){
+
+      for (int j = 0; j < this.blocks.length; j++) {
+        for (int k = 0; k < this.blocks[j].height(); k++) {
           if (counter + k == i) {
-            stringrow = " ".repeat(this.width() - this.blocks[j].width()).concat(this.blocks[j].row(k));
-          }
-        }
+            stringrow = " ".repeat(this.width() - this.blocks[j].width())
+                        .concat(this.blocks[j].row(k));
+          } // if()
+        } // for()
         counter += this.blocks[j].height();
-      }
-    }
+      } // for()
+    } // if (RIGHT)
     return stringrow;
   } // row(int)
 
@@ -132,11 +135,11 @@ public class VComp implements AsciiBlock {
    */
   public int height() {
     int height = 0;
-    
+
     for (int i = 0; i < this.blocks.length; i++) {
       height += this.blocks[i].height();
-    }
-      return height;
+    } // for()
+    return height;
   } // height()
 
   /**
@@ -146,16 +149,16 @@ public class VComp implements AsciiBlock {
    */
   public int width() {
 
-    if(this.blocks.length == 0) {
+    if (this.blocks.length == 0) {
       return 0;
-    }
+    } // if()
 
     int width = this.blocks[0].width();
     for (int i = 1; i < this.blocks.length; i++) {
       if (width < this.blocks[i].width()) {
         width = this.blocks[i].width();
-      }
-    }
+      } // if()
+    } // for()
     return width;
   } // width()
 
@@ -176,12 +179,12 @@ public class VComp implements AsciiBlock {
             for (int j = 0; j < this.width(); j++) {
               if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
                 return false;
-              }
-            }
-          }
+              } // if()
+            } // for()
+          } // for()
           return true;
-        }
-      }
+        } // if()
+      } // if()
       return false;
     } catch (Exception e) {
       return false;

@@ -105,12 +105,12 @@ public class Rect implements AsciiBlock {
             for (int j = 0; j < this.width(); j++) {
               if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
                 return false;
-              }
-            }
-          }
+              } // if()
+            } // for()
+          } // for()
           return true;
-        }
-      }
+        } // if()
+      } // if()
       return false;
     } catch (Exception e) {
       return false;

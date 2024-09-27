@@ -82,8 +82,8 @@ public class Line implements AsciiBlock {
       if (other instanceof Line) {
         if (line.equals(other.row(0))) {
           return true;
-        }
-      }
+        } // if()
+      } // if()
       return false;
     } catch (Exception e) {
       return false;

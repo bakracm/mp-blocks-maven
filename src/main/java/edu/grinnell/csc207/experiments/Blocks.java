@@ -1,7 +1,6 @@
 package edu.grinnell.csc207.experiments;
 
 import edu.grinnell.csc207.blocks.OurBlock;
-import edu.grinnell.csc207.blocks.VFlip2;
 import edu.grinnell.csc207.blocks.AsciiBlock;
 import edu.grinnell.csc207.blocks.Boxed;
 import edu.grinnell.csc207.blocks.HAlignment;

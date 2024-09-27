@@ -75,42 +75,34 @@ public class HComp implements AsciiBlock {
 
     String stringrow = new String();
 
-    if(this.align.equals(VAlignment.TOP)) {
-
+    if (this.align.equals(VAlignment.TOP)) {
       for (int j = 0; j < this.blocks.length; j++) {
         if (i < this.blocks[j].height()) {
           stringrow = stringrow.concat(this.blocks[j].row(i));
         } else {
           stringrow = stringrow.concat(" ".repeat(this.blocks[j].width()));
-        }
-      }
+        } // if checks if row is less than the height of the block
+      } // for loops through blocks array
     } else if (this.align.equals(VAlignment.CENTER)) {
-
       for (int j = 0; j < this.blocks.length; j++) {
-
         int diff = this.height() - this.blocks[j].height();
-
         if (i >= diff / 2 && i < diff / 2 + this.blocks[j].height()) {
           stringrow = stringrow.concat(this.blocks[j].row(i - diff / 2));
         } else {
           stringrow = stringrow.concat(" ".repeat(this.blocks[j].width()));
-        }
-      }
-
+        } // If the row should be empty or taken from the block
+      } // for loops through blocks array
     } else if (this.align.equals(VAlignment.BOTTOM)) {
-
-        for (int j = 0; j < this.blocks.length; j++) {
-
-          int diff = this.height() - this.blocks[j].height();
-
-          if (i >= diff) {
-            stringrow = stringrow.concat(this.blocks[j].row(i - diff));
-          } else {
-            stringrow = stringrow.concat(" ".repeat(this.blocks[j].width()));
-          }
-        }
-    } 
-    return stringrow;  // STUB
+      for (int j = 0; j < this.blocks.length; j++) {
+        int diff = this.height() - this.blocks[j].height();
+        if (i >= diff) {
+          stringrow = stringrow.concat(this.blocks[j].row(i - diff));
+        } else {
+          stringrow = stringrow.concat(" ".repeat(this.blocks[j].width()));
+        } // if the row should be empty or taken from the block
+      } // for loops through blocks array
+    } // if checks what the alignment is
+    return stringrow;
   } // row(int)
 
   /**
@@ -123,8 +115,8 @@ public class HComp implements AsciiBlock {
     for (int i = 1; i < this.blocks.length; i++) {
       if (height < this.blocks[i].height()) {
         height = this.blocks[i].height();
-      }
-    }
+      } // if height of block is less than the block after it
+    } // for loops through blocks array
     return height;
   } // height()
 
@@ -135,12 +127,10 @@ public class HComp implements AsciiBlock {
    */
   public int width() {
     int width = 0;
-    
     for (int i = 0; i < this.blocks.length; i++) {
       width += this.blocks[i].width();
-    }
-
-      return width;
+    } // for loops through blocks array
+    return width;
   } // width()
 
   /**
@@ -160,12 +150,12 @@ public class HComp implements AsciiBlock {
             for (int j = 0; j < this.width(); j++) {
               if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
                 return false;
-              }
-            }
-          }
+              } // if individual character matches between objects
+            } // for loops through columns
+          } // for loops through rows
           return true;
-        }
-      }
+        } // if the objects have the same width and height
+      } // if they're the same object
       return false;
     } catch (Exception e) {
       return false;
