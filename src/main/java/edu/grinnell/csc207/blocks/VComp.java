@@ -172,22 +172,33 @@ public class VComp implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    try {
-      if (other instanceof VComp) {
-        if (other.width() == this.width() && this.height() == other.height()) {
-          for (int k = 0; k < this.height(); k++) {
-            for (int j = 0; j < this.width(); j++) {
-              if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
-                return false;
-              } // if()
-            } // for()
-          } // for()
-          return true;
-        } // if()
-      } // if()
-      return false;
-    } catch (Exception e) {
-      return false;
-    } // try/catch(e)
+    return ((other instanceof VComp) && (this.eqv((VComp) other)));
   } // eqv(AsciiBlock)
+
+  /**
+   * Determine if another block is structurally equivalent to this block.
+   *
+   * @param other
+   *   The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *    false otherwise.
+   */
+  public boolean eqv(VComp other) {
+
+    int inputLength = 0;
+
+    if (this.blocks.length < ((VComp) other).blocks.length) {
+      inputLength = this.blocks.length;
+    } else {
+      inputLength = ((VComp) other).blocks.length;
+    } // if
+
+    for (int i = 0; i < inputLength; i++) {
+      if (!(this.blocks[i].eqv(((VComp) other).blocks[i]))) {
+        return false;
+      } // if
+    } // for
+    return this.align == ((VComp) other).align;
+  } // eqv(Grid)
 } // class VComp

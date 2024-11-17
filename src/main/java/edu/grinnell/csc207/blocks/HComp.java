@@ -143,22 +143,34 @@ public class HComp implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    try {
-      if (other instanceof HComp) {
-        if (other.width() == this.width() && this.height() == other.height()) {
-          for (int k = 0; k < this.height(); k++) {
-            for (int j = 0; j < this.width(); j++) {
-              if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
-                return false;
-              } // if individual character matches between objects
-            } // for loops through columns
-          } // for loops through rows
-          return true;
-        } // if the objects have the same width and height
-      } // if they're the same object
-      return false;
-    } catch (Exception e) {
-      return false;
-    } // try/catch(e)
+    return ((other instanceof HComp) && (this.eqv((HComp) other)));
   } // eqv(AsciiBlock)
+
+  /**
+   * Determine if another block is structurally equivalent to this block.
+   *
+   * @param other
+   *   The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *    false otherwise.
+   */
+  public boolean eqv(HComp other) {
+
+    int inputLength = 0;
+
+    if (this.blocks.length < ((HComp) other).blocks.length) {
+      inputLength = this.blocks.length;
+    } else {
+      inputLength = ((HComp) other).blocks.length;
+    } // if
+
+
+    for (int i = 0; i < inputLength; i++) {
+      if (!(this.blocks[i].eqv(((HComp) other).blocks[i]))) {
+        return false;
+      } // if
+    } // for
+    return this.align == ((HComp) other).align;
+  } // eqv(Grid)
 } // class HComp

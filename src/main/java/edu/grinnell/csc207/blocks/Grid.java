@@ -84,7 +84,7 @@ public class Grid implements AsciiBlock {
     return element.width() * hreps;
   } // width()
 
-  /**
+    /**
    * Determine if another block is structurally equivalent to this block.
    *
    * @param other
@@ -94,24 +94,20 @@ public class Grid implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    try {
-      if (other instanceof Grid) {
-        if (other.width() == this.width() && this.height() == other.height()) {
-          if (this.element.eqv(((Grid) other).element)) {
-            for (int k = 0; k < this.height(); k++) {
-              for (int j = 0; j < this.width(); j++) {
-                if (this.row(k).charAt(j) != other.row(k).charAt(j)) {
-                  return false;
-                } // if()
-              } // for()
-            } // for()
-            return true;
-          } // if()
-        } // if()
-      } // if()
-      return false;
-    } catch (Exception e) {
-      return false;
-    } // try/catch(e)
+    return ((other instanceof Grid) && (this.eqv((Grid) other)));
   } // eqv(AsciiBlock)
+
+  /**
+   * Determine if the two blocks were constructed the same.
+   *
+   * @param other
+   *   The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and
+   *    false otherwise.
+   */
+  public boolean eqv(Grid other) {
+    return (this.hreps == other.hreps) && (this.vreps == other.vreps)
+        && AsciiBlock.eqv(this.element, other.element);
+  } // eqv(Grid)
 } // class Grid

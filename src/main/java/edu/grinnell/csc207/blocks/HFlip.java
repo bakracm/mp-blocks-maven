@@ -100,6 +100,9 @@ public class HFlip implements AsciiBlock {
               } // if()
             } // for()
           } // for()
+          if (!(this.block.eqv(((HFlip) other).block))) {
+            return false;
+          } // if
           return true;
         } // if()
       } // if()
