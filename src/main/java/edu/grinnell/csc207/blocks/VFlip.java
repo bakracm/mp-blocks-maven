@@ -87,6 +87,9 @@ public class VFlip implements AsciiBlock {
               } // if()
             } // for()
           } // for()
+          if (!(this.block.eqv(((VFlip) other).block))) {
+            return false;
+          } // if
           return true;
         } // if()
       } // if()
