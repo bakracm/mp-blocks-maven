@@ -12,7 +12,7 @@ Explorations with the creation, composition, and mutation of blocks of ASCII tex
 
 Fun ways to manipulate blocks of characters!
 
-**Notes fpr grader**
+**Notes for grader**
 
 We added our names to each file, moved the tests for our block to TestNewBlock, and fixed the issues with eqv so that all tests pass.
 
